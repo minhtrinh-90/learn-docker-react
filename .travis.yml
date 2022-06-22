@@ -8,3 +8,15 @@ before_install:
 
 script:
   - docker run -e CI=true trinhno/learn-docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-1"
+  app: "learn-docker-react-2"
+  env: "Learndockerreact2-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-1-285763974571"
+  bucket_path: "learn-docker-react-2"
+  on:
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
